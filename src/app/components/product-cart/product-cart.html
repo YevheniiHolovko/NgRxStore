@@ -1,0 +1,15 @@
+<div class="cart-page">
+  <h2>Your cart</h2>
+
+  <div *ngIf="(items$ | async)?.length === 0">Cart is empty</div>
+
+  <div *ngFor="let item of items$ | async" class="cart-item">
+    <img [src]="item.image" width="50" />
+    <span>{{ item.title }} - {{ item.price }} $</span>
+    <button (click)="onRemove(item.id)">Delete</button>
+  </div>
+
+  <hr />
+  <h3>Together: {{ total$ | async}}</h3>
+  <button (click)="onClear()">Clear all</button>
+</div>

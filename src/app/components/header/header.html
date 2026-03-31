@@ -1,0 +1,9 @@
+<header class="header">
+  <div class="logo">Магазин</div>
+  <nav>
+    <a href="#">Головна</a>
+    <a href="#">Товари</a>
+    <a href="#" (click)="onContact()">Контакти</a>
+    <a [routerLink]="['/cart']">Кошик ({{ count$ | async }})</a>
+  </nav>
+</header>

@@ -1,0 +1,7 @@
+<div class="filter">
+  <label for="category">Filter by category:</label>
+  <select id="category" (change)="onChanged($event)">
+    <option value="all">all</option>
+    <option *ngFor="let cat of categories$ | async" [value]="cat">{{cat}}</option>
+  </select>
+</div>
