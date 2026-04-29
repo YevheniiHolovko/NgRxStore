@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './filter.scss',
 })
 export class Filter {
-private productService = inject(Products)
-categories$ = this.productService.getCategories()
+  private productService = inject(Products);
+  categories$ = this.productService.getCategories();
 
-onChanged(event: Event) {
-  const value = (event.target as HTMLSelectElement).value
-  this.productService.changeCaetegory(value)
-}
+  onChanged(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.productService.changeCaetegory(value);
+  }
 }

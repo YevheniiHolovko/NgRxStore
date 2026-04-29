@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { selectCartItems, selectCartTotal } from './cart.selectors';
-import * as CartActions from './cart.action'
+import { selectCartItems, selectCartTotal } from '../../store/selectors/cart.selectors';
+import * as CartActions from '../../store/actions/cart.action'
 
 @Component({
   selector: 'app-product-cart',

@@ -1,9 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as CartSelectors from '../product-cart/cart.selectors'
+import * as CartSelectors from '../../store/selectors/cart.selectors';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-header',
@@ -12,11 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.scss',
 })
 export class Header {
-private store = inject(Store)
+  private store = inject(Store);
 
-count$ = this.store.select(CartSelectors.selectCartCount)
+  count$ = this.store.select(CartSelectors.selectCartCount);
 
-onContact(){
-  alert('+380....67')
-}
+  onContact() {
+    alert('+380....67');
+  }
 }

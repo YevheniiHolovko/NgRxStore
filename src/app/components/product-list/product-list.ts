@@ -1,29 +1,26 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
-import { Products } from '../../services/products';
-import { switchMap } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { Filter } from "../filter/filter";
-
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Filter } from '../filter/filter';
+import { Store } from '@ngrx/store';
+import * as productsSelector from '../../store/selectors/products.selectors';
+import * as productsAction from '../../store/actions/products.action';
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCard, CommonModule, Filter],
+  imports: [ProductCard, CommonModule, Filter, AsyncPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
 export class ProductList {
-  @Input() products!: any;
+  private store = inject(Store);
 
-  private productsService = inject(Products);
+  products$ = this.store.select(productsSelector.selectAllProducts);
+  loading$ = this.store.select(productsSelector.selectProductsLoading);
+  error$ = this.store.select(productsSelector.selectProductsError);
 
-  
-  product$ = this.productsService.categorySelected$.pipe(
-    switchMap(category => {
-      if(category === 'all') {
-        return this.productsService.getData()
-      }
-      return this.productsService.getProductByCategory(category)
-    })
-  )
-
+  public ngOnInit(): any {
+    console.log('1 init');
+    this.store.dispatch(productsAction.loadProducts());
+    console.log('2 com send');
+  }
 }
