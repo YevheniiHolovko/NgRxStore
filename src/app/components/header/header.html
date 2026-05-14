@@ -2,8 +2,7 @@
   <div class="logo">Магазин</div>
   <nav>
     <a href="#">Головна</a>
-    <a href="#">Товари</a>
-    <a href="#" (click)="onContact()">Контакти</a>
-    <a [routerLink]="['/cart']">Кошик ({{ count$ | async }})</a>
+    <a href="#">Контакти</a>
+    <a [routerLink]="['/cart']">Кошик ({{ totalCount$ | async }})</a>
   </nav>
 </header>

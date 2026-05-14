@@ -16,7 +16,7 @@ export class ProductCard {
 
   private store = inject(Store);
 
-  onAddToCart(event: Event) {
+  public onAddToCart(event: Event): any {
     event.stopPropagation();
     this.store.dispatch(CartActions.addToCart({ product: this.product }));
   }

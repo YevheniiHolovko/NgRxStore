@@ -1,4 +1,3 @@
-/* Контейнер сторінки */
 .cart-page {
   max-width: 800px;
   margin: 40px auto;
@@ -15,7 +14,6 @@ h2 {
   font-size: 2rem;
 }
 
-/* Повідомлення про порожній кошик */
 .empty-message {
   text-align: center;
   padding: 40px;
@@ -23,7 +21,6 @@ h2 {
   font-style: italic;
 }
 
-/* Картка товару в кошику */
 .cart-item {
   display: flex;
   align-items: center;
@@ -60,7 +57,6 @@ h2 {
   font-weight: bold;
 }
 
-/* Кнопка видалення */
 .remove-btn {
   background-color: #ff4757;
   color: white;
@@ -75,7 +71,6 @@ h2 {
   background-color: #ff6b81;
 }
 
-/* Підсумок (Footer кошика) */
 .cart-summary {
   margin-top: 30px;
   padding-top: 20px;
@@ -91,7 +86,6 @@ h2 {
   color: #2c3e50;
 }
 
-/* Кнопки дій */
 .actions {
   display: flex;
   gap: 10px;

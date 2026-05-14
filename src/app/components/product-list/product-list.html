@@ -1,11 +1,17 @@
-<app-filter />
-<div class="product-grid">
+<div class="main-container">
+<app-filter
+  [categories]="(allCategories$ | async) || []"
+  (categoryChanged)="onCategotyChange($event)"
+/>
+<div>
   <div *ngIf="loading$ | async" class="loader">Loading products, please wait...</div>
   <div *ngIf="error$ | async as error" class="error">Error: {{ error }}</div>
-  <div *ngIf="!(loading$ | async)">
+  <div class="product-grid" *ngIf="!(loading$ | async)">
     <app-product-card
       *ngFor="let product of products$ | async"
       [product]="product"
     ></app-product-card>
   </div>
+</div>
+
 </div>

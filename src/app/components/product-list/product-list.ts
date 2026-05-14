@@ -5,6 +5,7 @@ import { Filter } from '../filter/filter';
 import { Store } from '@ngrx/store';
 import * as productsSelector from '../../store/selectors/products.selectors';
 import * as productsAction from '../../store/actions/products.action';
+
 @Component({
   selector: 'app-product-list',
   imports: [ProductCard, CommonModule, Filter, AsyncPipe],
@@ -14,13 +15,16 @@ import * as productsAction from '../../store/actions/products.action';
 export class ProductList {
   private store = inject(Store);
 
-  products$ = this.store.select(productsSelector.selectAllProducts);
+  products$ = this.store.select(productsSelector.selectFilteredProducts);
   loading$ = this.store.select(productsSelector.selectProductsLoading);
   error$ = this.store.select(productsSelector.selectProductsError);
+  allCategories$ = this.store.select(productsSelector.selectAllCategories)
 
   public ngOnInit(): any {
-    console.log('1 init');
     this.store.dispatch(productsAction.loadProducts());
-    console.log('2 com send');
+  }
+  public onCategotyChange(category: string): any {
+    this.store.dispatch(productsAction.filterByCategory({category}))
+
   }
 }

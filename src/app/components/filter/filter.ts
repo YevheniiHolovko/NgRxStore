@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Products } from '../../services/products';
 import { CommonModule } from '@angular/common';
 
@@ -9,11 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './filter.scss',
 })
 export class Filter {
+  @Input() categories: string[] = [];
+  @Output() categoryChanged = new EventEmitter<string>();
+
   private productService = inject(Products);
   categories$ = this.productService.getCategories();
 
-  onChanged(event: Event) {
+  public onChanged(event: Event): any {
     const value = (event.target as HTMLSelectElement).value;
-    this.productService.changeCaetegory(value);
+    this.categoryChanged.emit(value);
   }
 }

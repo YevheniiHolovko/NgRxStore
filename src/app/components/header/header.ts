@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as CartSelectors from '../../store/selectors/cart.selectors';
@@ -13,9 +13,6 @@ import { CommonModule } from '@angular/common';
 export class Header {
   private store = inject(Store);
 
-  count$ = this.store.select(CartSelectors.selectCartCount);
+  totalCount$ = this.store.select(CartSelectors.selectTotalCount)
 
-  onContact() {
-    alert('+380....67');
-  }
 }

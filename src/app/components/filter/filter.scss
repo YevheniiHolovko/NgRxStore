@@ -1,8 +1,9 @@
-.filter {
+.filter-section {
   margin-bottom: 30px;
-}
-
-select {
-  margin-left: 10px;
-  padding: 5px;
+  select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+  }
 }

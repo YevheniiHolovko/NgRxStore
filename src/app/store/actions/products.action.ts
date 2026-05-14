@@ -11,3 +11,7 @@ export const loadProductsFailure = createAction(
     '[Product API] Load failure',
     props<{error: string}>()
 )
+export const filterByCategory = createAction(
+    '[Product List] Filter by category',
+    props<{category: string}>()
+)

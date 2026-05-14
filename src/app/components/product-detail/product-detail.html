@@ -1,11 +1,16 @@
-<div *ngIf="product$ | async as product" class="product-detail">
-  <button routerLink="/">← Назад до списку</button>
-  <div class="content">
-    <img [src]="product.image" [alt]="product.title">
-    <h1>{{ product.title }}</h1>
-    <p class="category">Категорія: {{ product.category }}</p>
-    <p class="description">{{ product.description }}</p>
-    <p class="price">Ціна: {{ product.price }} $</p>
-    <button class="buy-btn">Додати в кошик</button>
-  </div>
+<div class="product-container">
+  <button class="back-btn" routerLink="/">← Назад до списку</button>
+
+  @if (product$ | async; as product) {
+    <div class="product-layout">
+      <div class="image-section"><img [src]="product.image" [alt]="product.title" /></div>
+      <div class="info-section">
+        <p class="category">Категорія: {{ product.category }}</p>
+        <h1 class="title">{{ product.title }}</h1>
+        <p class="description">{{ product.description }}</p>
+        <p class="price-tag">Ціна: {{ product.price }} $</p>
+        <button class="buy-btn" (click)="onAddToCart(product)">Додати в кошик</button>
+      </div>
+    </div>
+  }
 </div>

@@ -9,5 +9,4 @@ export interface Product {
         alt: string
     }
     quantity?: number
-
 }

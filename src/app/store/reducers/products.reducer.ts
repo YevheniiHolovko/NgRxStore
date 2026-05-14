@@ -6,12 +6,14 @@ export interface ProductState {
     items: Product[]
     loading: boolean
     error: string | null
+    selectedCategory: string
 }
 
 export const initialState: ProductState = {
     items: [],
     loading: false,
-    error: null
+    error: null,
+    selectedCategory: 'all'
 }
 
 export const productReducer = createReducer(
@@ -26,6 +28,10 @@ export const productReducer = createReducer(
         ...state,
         error,
         loading: false
+    })),
+    on(productsAction.filterByCategory, (state, {category}) => ({
+        ...state,
+        selectedCategory: category
     }))
 
 )

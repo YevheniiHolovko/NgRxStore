@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectCartItems, selectCartTotal } from '../../store/selectors/cart.selectors';
-import * as CartActions from '../../store/actions/cart.action'
+import * as CartActions from '../../store/actions/cart.action';
 
 @Component({
   selector: 'app-product-cart',
@@ -11,15 +11,15 @@ import * as CartActions from '../../store/actions/cart.action'
   styleUrl: './product-cart.scss',
 })
 export class ProductCart {
-  private store = inject(Store)
+  private store = inject(Store);
 
-  items$ = this.store.select(selectCartItems)
-  total$ = this.store.select(selectCartTotal)
+  items$ = this.store.select(selectCartItems);
+  total$ = this.store.select(selectCartTotal);
 
-  onRemove(productId: number) {
-    this.store.dispatch(CartActions.removeFromCart({productId}))
+  public onRemove(productId: number): any {
+    this.store.dispatch(CartActions.removeFromCart({ productId }));
   }
-  onClear() {
-    this.store.dispatch(CartActions.clearCart())
+  public onClear(): any {
+    this.store.dispatch(CartActions.clearCart());
   }
 }
